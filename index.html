@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="./pics/image6.jpg">
     <style>
         * {
             margin: 0;
@@ -45,16 +46,19 @@
         /* Hero Section */
         .hero {
             height: 100vh;
+            background-color: var(--dark-pink);
             background-image: url('./pics/image6.jpg');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
             color: var(--white);
+            min-height: 600px;
         }
 
         .hero::before {
