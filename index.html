@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Девичник в Большом Городе</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --pink: #F4C2C2;
+            --dark-pink: #E8A5A5;
+            --black: #1A1A1A;
+            --white: #FFFFFF;
+            --beige: #F5F1EB;
+            --silver: #C0C0C0;
+            --light-beige: #FAF8F5;
+            --text-gray: #4A4A4A;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-gray);
+            line-height: 1.6;
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--black);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-image: url('pics/image6.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            color: var(--white);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--white);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 40px;
+            color: var(--pink);
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: var(--pink);
+            color: var(--black);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(244, 194, 194, 0.4);
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--dark-pink);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(244, 194, 194, 0.6);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--pink), var(--silver));
+        }
+
+        /* Intro Section */
+        .intro {
+            background-image: url('pics/images-3.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            padding: 100px 20px;
+        }
+
+        .intro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.85);
+        }
+
+        .intro-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 2;
+        }
+
+        .intro-content p {
+            margin-bottom: 20px;
+        }
+
+        .intro-quote {
+            font-style: italic;
+            color: var(--dark-pink);
+            font-size: 1.3rem;
+            margin: 30px 0;
+            font-weight: 500;
+        }
+
+        /* Dress Code Section */
+        .dress-code-section {
+            background-color: var(--light-beige);
+            padding: 100px 20px;
+        }
+
+        .dress-code-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 60px;
+        }
+
+        .dress-code-card {
+            background-color: var(--white);
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .dress-code-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .dress-code-card h3 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: var(--black);
+        }
+
+        .dress-code-subtitle {
+            font-style: italic;
+            color: var(--text-gray);
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .color-palette {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dark-pink);
+            margin: 20px 0;
+            line-height: 1.8;
+        }
+
+        .dress-code-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-top: 20px;
+        }
+
+        .shoe-icon {
+            font-size: 3rem;
+            margin: 20px 0;
+            color: var(--pink);
+        }
+
+        /* Details Section */
+        .details-section {
+            background-color: var(--white);
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .details-card {
+            background: linear-gradient(135deg, var(--beige) 0%, var(--light-beige) 100%);
+            padding: 60px 40px;
+            border-radius: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .detail-item {
+            margin: 30px 0;
+            font-size: 1.2rem;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 10px;
+            display: block;
+            font-size: 1.1rem;
+        }
+
+        .detail-value {
+            color: var(--text-gray);
+            font-size: 1.3rem;
+        }
+
+        .detail-value a {
+            color: var(--dark-pink);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .detail-value a:hover {
+            color: var(--pink);
+            text-decoration: underline;
+        }
+
+        .map-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background-color: var(--pink);
+            color: var(--black);
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .map-link:hover {
+            background-color: var(--dark-pink);
+            transform: translateY(-2px);
+        }
+
+        .location-icon {
+            font-size: 2rem;
+            color: var(--pink);
+            margin-bottom: 20px;
+        }
+
+        /* Quotes Section */
+        .quotes-section {
+            background-image: url('pics/images-2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            padding: 100px 20px;
+        }
+
+        .quotes-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .quotes-container {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .quote-card {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--pink);
+            transition: transform 0.3s ease;
+        }
+
+        .quote-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .quote-text {
+            font-style: italic;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-gray);
+        }
+
+        /* Scroll to Top Button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--pink);
+            color: var(--black);
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(244, 194, 194, 0.4);
+            z-index: 1000;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            background-color: var(--dark-pink);
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .dress-code-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .dress-code-card {
+                padding: 30px;
+            }
+
+            .dress-code-card h3 {
+                font-size: 1.8rem;
+            }
+
+            .intro-content {
+                font-size: 1rem;
+            }
+
+            .intro-quote {
+                font-size: 1.1rem;
+            }
+
+            .details-card {
+                padding: 40px 20px;
+            }
+
+            .detail-value {
+                font-size: 1.1rem;
+            }
+
+            .quotes-container {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+
+            .hero {
+                background-attachment: scroll;
+            }
+
+            .intro {
+                background-attachment: scroll;
+            }
+
+            .quotes-section {
+                background-attachment: scroll;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .btn-primary {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+
+            .dress-code-card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>Девичник в Большом Городе</h1>
+            <p class="hero-subtitle">A night of fashion, friendship, and magic.</p>
+            <a href="#intro" class="btn-primary">Подробнее</a>
+        </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="intro fade-in" id="intro">
+        <div class="intro-content">
+            <p>Говорят, мода меняется, но настоящая дружба никогда не выходит из моды.</p>
+            <p>Ты открываешь новую, прекрасную главу своей жизни. И прежде чем прозвучит заветное «Да», мы соберемся вместе, чтобы отпраздновать нашу связь, которая была и остается для нас главной поддержкой.</p>
+            <p class="intro-quote">Maybe our girlfriends are our true soulmates.</p>
+            <p>В этот вечер мы будем сиять, смеяться и создавать воспоминания, которые останутся с нами навсегда.</p>
+        </div>
+    </section>
+
+    <!-- Dress Code Section -->
+    <section class="dress-code-section fade-in" id="dress-code">
+        <h2 class="section-title">Dress Code & The Shoe Policy</h2>
+        <div class="dress-code-container">
+            <div class="dress-code-card">
+                <h3>Dress Code</h3>
+                <p class="dress-code-subtitle">In a world full of trends, I want us to remain a classic.</p>
+                <div class="color-palette">
+                    Pink | Black | White | Beige | Silver
+                </div>
+                <p>И конечно вайба любимого сериала</p>
+            </div>
+            <div class="dress-code-card">
+                <h3>The Shoe Policy</h3>
+                <div class="shoe-icon">👠</div>
+                <p>Мы знаем, что погода в нашем городе бывает капризной. Чтобы чувствовать себя по-настоящему fabulous и не зависеть от прогноза, можешь захватить любимые туфли для помещения. Пусть ни дождь, ни ветер не мешают тебе блистать в нашей уютной локации.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Details Section -->
+    <section class="details-section fade-in" id="details">
+        <h2 class="section-title">Ждем тебя!</h2>
+        <div class="details-card">
+            <div class="location-icon">📍</div>
+            <div class="detail-item">
+                <span class="detail-label">Время</span>
+                <div class="detail-value">13:40 - 14:00</div>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Адрес</span>
+                <div class="detail-value">Шоссе Энтузиастов, 31</div>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Контакт</span>
+                <div class="detail-value">Тебя встретит <a href="https://t.me/username_telegram" target="_blank">@minttesirap</a></div>
+            </div>
+            <a href="https://yandex.ru/maps/?text=Шоссе+Энтузиастов,+31" target="_blank" class="map-link">Открыть карту</a>
+        </div>
+    </section>
+
+    <!-- Quotes Section -->
+    <section class="quotes-section fade-in" id="quotes">
+        <h2 class="section-title">Inspiring Words</h2>
+        <div class="quotes-container">
+            <div class="quote-card">
+                <p class="quote-text">«The most important thing in life is your family. Sometimes it's the family you're born into and sometimes it's the one you make for yourself.»</p>
+            </div>
+            <div class="quote-card">
+                <p class="quote-text">«They say nothing lasts forever; dreams change, trends come and go, but friendship never goes out of style.»</p>
+            </div>
+            <div class="quote-card">
+                <p class="quote-text">«Life gives you lots of chances to screw up which means you have just as many chances to get it right.»</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Наверх">↑</button>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Scroll to top button
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
